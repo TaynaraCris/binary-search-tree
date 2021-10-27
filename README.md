@@ -16,7 +16,7 @@ Balance factor = Height_left_subtree - height_right_subtree
 |Leonardo Sampaio Barros|17/0038971|
 |Vinícius Angelo de Brito Vieira|19/0118059|
 
-## Trabalho pratico 1
+## binary-search-tree
 
 ---
 
