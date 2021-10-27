@@ -34,6 +34,14 @@ void insere_node(int value, No *&root){
 	}
 };
 
+void inorder(struct No* root)
+{
+    if (root != NULL) {
+        inorder(root->pEsq);
+        printf("%d\n",root->Chave);
+        inorder(root->pDir);
+    }
+}
 
 void printa(No * root){
     if (root != nullptr) { /*inserir x como raiz da árvore*/
@@ -80,9 +88,10 @@ int main(){
 		insere_node(values[i], root);
     }
 
-	cout << "Printar:" << endl;
+	cout << "Printando em ordem crescente:" << endl;
 	// Printando os nos
-	printa(root);	
+	//printa(root);	
+	inorder(root);
 
     return 0;
 }
