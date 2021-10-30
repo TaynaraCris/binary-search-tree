@@ -38,7 +38,7 @@ void inorder(struct No* root)
 {
     if (root != NULL) {
         inorder(root->pEsq);
-        printf("%d\n",root->Chave);
+        printf("%d  %d\n",root->Chave, root->FatBal);
         inorder(root->pDir);
     }
 }
@@ -51,6 +51,33 @@ void printa(No * root){
     }
 };
 
+int getAltura(No* Node)
+{
+    if (Node == nullptr)
+        return 0;
+    else {
+        /* computa a altura de cada subArvore */
+        int lHeight = getAltura(Node->pEsq);
+        int rHeight = getAltura(Node->pDir);
+
+        /* usa a maior altura */
+        if (lHeight > rHeight){
+            return (lHeight + 1);
+		}
+        else{
+            return (rHeight + 1);
+		}
+    }
+}
+
+void calculaFatBal(No * root){
+	if(root != nullptr){
+		calculaFatBal(root->pEsq);
+		calculaFatBal(root ->pDir);
+
+		root->FatBal = (getAltura(root->pEsq) - getAltura(root->pDir));
+	}
+}
 
 int main(){
 
@@ -83,10 +110,14 @@ int main(){
 
     No * root = nullptr;
 
+	
+
 	// Gera a arvore
     for(int i = 0; i <= ind;++i) {
 		insere_node(values[i], root);
     }
+
+	calculaFatBal(root);
 
 	cout << "Printando em ordem crescente:" << endl;
 	// Printando os nos
