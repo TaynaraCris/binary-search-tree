@@ -1,5 +1,11 @@
 #include <bits/stdc++.h>
+
+// Use essa biblioteca para executar o codigo em ambiente LINUX
+// Para executar use (g++ arvore.cpp -o prog edalib.a) e depois (./prog)
 #include "edalib.h"
+
+// Use essa biblioteca para executar o codigo em ambiente WINDOWS
+// #include "edalibWindows.h"
 
 using namespace std;
 

@@ -7,9 +7,24 @@ Balance factor = Height_left_subtree - height_right_subtree
 
 ## Rodando o programa
 
+### em ambiente linux
+
+deixe descomentada o #include edalib.h e comente o #include edalibWindows
+
 ```shell
 // Executando o programa com a biblioteca edalib.h
     $ g++ arvore.cpp -o prog edalib.a
+    $ ./prog
+
+```
+
+### em ambiente windows
+
+deixe descomentada o #include edalibWindows e comente o #include edalib.h
+
+```shell
+// Executando o programa com a biblioteca edalibWindows
+    $ g++ -o prog  arvore.cpp  
     $ ./prog
 
 ```

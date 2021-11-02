@@ -1,6 +1,5 @@
 
 #include <bits/stdc++.h>
-// #include "edalib.h"
 
 using namespace std;
 
@@ -79,7 +78,7 @@ void inorder(struct No *root)
     if (root != NULL)
     {
         inorder(root->pEsq);
-        printf("%d  %d\n", root->Chave, root->FatBal);
+        printf("Chave: %d  Fator de balanceamento: %d\n", root->Chave, root->FatBal);
         inorder(root->pDir);
     }
 }
