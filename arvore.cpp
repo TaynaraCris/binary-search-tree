@@ -3,9 +3,12 @@
 
 using namespace std;
 
-
 int main()
 {
+
+	print_outro();
+	print_test();
+	print_outro();
 
 	fstream file;
 	file.open("arquivo.csv", ios::in);
@@ -58,8 +61,6 @@ int main()
 
 	return 0;
 }
-
-
 // string replace(string values_string)
 // {
 
