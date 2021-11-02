@@ -6,9 +6,6 @@ using namespace std;
 int main()
 {
 
-	print_outro();
-	print_test();
-	print_outro();
 
 	fstream file;
 	file.open("arquivo.csv", ios::in);

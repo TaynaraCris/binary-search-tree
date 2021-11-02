@@ -4,14 +4,6 @@
 
 using namespace std;
 
-void print_test(){
-    cout << "arooooooooooo" << endl;
-}
-
-void print_outro(){
-    cout << "testeeeee" << endl;
-}
-
 string replace(string values_string)
 {
 

@@ -5,6 +5,14 @@ In the end of the program, we should be able to print the BST in crescent order.
 
 Balance factor = Height_left_subtree - height_right_subtree
 
+## Rodando o programa
+
+```shell
+// Executando o programa com a biblioteca edalib.h
+    $ g++ arvore.cpp -o prog edalib.a
+    $ ./prog
+
+```
 
 ## Integrantes:
 |Nome|Matrícula|

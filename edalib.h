@@ -5,9 +5,6 @@
 
     using namespace std;
 
-    void print_test();
-    void print_outro();
-
     string replace(string values_string);
 
     struct No;
