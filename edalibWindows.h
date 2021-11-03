@@ -5,6 +5,20 @@
 
     using namespace std;
 
+    struct No
+    {
+        int Chave;
+        struct No *pEsq{}, *pDir{};
+        int FatBal;
+    };
+
+    void calculaFatBal(No *root);
+    void printa(No *root);
+    int getAltura(No *No);
+    void inorder(struct No *root);
+    struct No *liberaNo(struct No *root, int Chave);
+    void insere_node(int value, No *&root);
+
     string replace(string values_string)
     {
 
@@ -18,36 +32,64 @@
         return values_string;
     }
 
-    struct No
+    
+
+#endif
+
+void calculaFatBal(No *root)
     {
-        int Chave;
-        struct No *pEsq{}, *pDir{};
-        int FatBal;
+        if (root != nullptr)
+        {
+            calculaFatBal(root->pEsq);
+            calculaFatBal(root->pDir);
+
+            root->FatBal = (getAltura(root->pEsq) - getAltura(root->pDir));
+        }
+    }
+
+void printa(No *root)
+    {
+        if (root != nullptr)
+        { /*inserir x como raiz da árvore*/
+            cout << root->Chave << endl;
+            printa(root->pEsq);
+            printa(root->pDir);
+        }
     };
 
-    void insere_node(int value, No *&root)
+int getAltura(No *No)
+{
+    if (No == nullptr)
+        return 0;
+    else
     {
-        if (root == nullptr)
-        { /*inserir x como raiz da árvore*/
-            root = (No *)malloc(sizeof(No));
-            root->Chave = value;
-            root->pEsq = nullptr;
-            root->pDir = nullptr;
+        /* computa a altura de cada subArvore */
+        int lHeight = getAltura(No->pEsq);
+        int rHeight = getAltura(No->pDir);
+
+        /* usa a maior altura */
+        if (lHeight > rHeight)
+        {
+            return (lHeight + 1);
         }
         else
         {
-            if (value < root->Chave)
-            {
-                insere_node(value, root->pEsq);
-            }
-            if (value > root->Chave)
-            {
-                insere_node(value, root->pDir);
-            }
+            return (rHeight + 1);
         }
-    };
+    }
+}
 
-    struct No *liberaNo(struct No *root, int Chave)
+void inorder(struct No *root)
+    {
+        if (root != NULL)
+        {
+            inorder(root->pEsq);
+            printf("Chave: %d  Fator de balanceamento: %d\n", root->Chave, root->FatBal);
+            inorder(root->pDir);
+        }
+    }
+
+struct No *liberaNo(struct No *root, int Chave)
     {
         if (root == NULL)
             return root;
@@ -75,59 +117,24 @@
         }
     }
 
-    void inorder(struct No *root)
+    void insere_node(int value, No *&root)
     {
-        if (root != NULL)
-        {
-            inorder(root->pEsq);
-            printf("Chave: %d  Fator de balanceamento: %d\n", root->Chave, root->FatBal);
-            inorder(root->pDir);
-        }
-    }
-
-    void printa(No *root)
-    {
-        if (root != nullptr)
+        if (root == nullptr)
         { /*inserir x como raiz da árvore*/
-            cout << root->Chave << endl;
-            printa(root->pEsq);
-            printa(root->pDir);
+            root = (No *)malloc(sizeof(No));
+            root->Chave = value;
+            root->pEsq = nullptr;
+            root->pDir = nullptr;
         }
-    };
-
-    int getAltura(No *No)
-    {
-        if (No == nullptr)
-            return 0;
         else
         {
-            /* computa a altura de cada subArvore */
-            int lHeight = getAltura(No->pEsq);
-            int rHeight = getAltura(No->pDir);
-
-            /* usa a maior altura */
-            if (lHeight > rHeight)
+            if (value < root->Chave)
             {
-                return (lHeight + 1);
+                insere_node(value, root->pEsq);
             }
-            else
+            if (value > root->Chave)
             {
-                return (rHeight + 1);
+                insere_node(value, root->pDir);
             }
         }
     }
-
-    void calculaFatBal(No *root)
-    {
-        if (root != nullptr)
-        {
-            calculaFatBal(root->pEsq);
-            calculaFatBal(root->pDir);
-
-            root->FatBal = (getAltura(root->pEsq) - getAltura(root->pDir));
-        }
-    }
-
-
-
-#endif
